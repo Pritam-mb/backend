@@ -1,6 +1,6 @@
 import express from 'express'
-
 const app= express();
+// const port =3000
 const jokes =[
     {
         index: 1,
@@ -8,16 +8,19 @@ const jokes =[
     },
       {
         index: 2,
-        joke: "kaka amr valo"
+        joke: "mama amr valo"
     },
       {
         index: 3,
-        joke: "kaka amr valo"
+        joke: "mamata di amr valo"
     },
 ]
 app.get('/',(req,res)=>{
     res.send('sserver has created')
 });
+app.get('/api/jokes',(req,res)=>{
+    res.send(jokes)
+})
 
 const port = process.env.PORT || 3000
 

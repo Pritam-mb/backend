@@ -6,18 +6,23 @@ import axios from 'axios'
 function App() {
   const [jokes, setjokes] = useState([])
   useEffect(()=>{
-    axios.get('https://localhost:3000/jokess')
-  })
+    axios.get('/api/jokes')
+    .then((res)=>{
+      return setjokes(res.data)
+    }).catch((err)=>{
+      console.log(err);
+    })
+  },[])
   return (
     <>
      <h1>hello hi bye bye</h1>
      <p>{jokes.length}</p>
      {
-      jokes.map((joke,index)=>{
+      jokes.map((joke,index)=>(
         <div key={joke.index}>
           <h3>{joke.joke}</h3>
         </div>
-      })
+      ))
      }
     </>
   )
